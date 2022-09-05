@@ -61,7 +61,8 @@ public class Login extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JSeparator();
         jPanel2 = new javax.swing.JPanel();
         NombreEmpresa = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        NombreEmpresa1 = new javax.swing.JLabel();
+        logoLabel = new javax.swing.JLabel();
         TituloTxt = new javax.swing.JLabel();
         Usuariotxt = new javax.swing.JTextField();
         PassTxt = new javax.swing.JPasswordField();
@@ -123,30 +124,36 @@ public class Login extends javax.swing.JFrame {
         Barra.setLayout(BarraLayout);
         BarraLayout.setHorizontalGroup(
             BarraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 880, Short.MAX_VALUE)
+            .addGap(0, 890, Short.MAX_VALUE)
         );
         BarraLayout.setVerticalGroup(
             BarraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 30, Short.MAX_VALUE)
         );
 
-        jPanel1.add(Barra, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jPanel1.add(Barra, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, -1));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 430, 10));
         jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 430, 10));
 
-        jPanel2.setBackground(new java.awt.Color(255, 102, 0));
+        jPanel2.setBackground(new java.awt.Color(0, 104, 215));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         NombreEmpresa.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
         NombreEmpresa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        NombreEmpresa.setText("Libreria Chinita");
-        jPanel2.add(NombreEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 260, 20));
+        NombreEmpresa.setText("Manuel");
+        jPanel2.add(NombreEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 260, 40));
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/LibroLogin.png"))); // NOI18N
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 260, 430));
+        NombreEmpresa1.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
+        NombreEmpresa1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        NombreEmpresa1.setText("Liceo Informatico");
+        jPanel2.add(NombreEmpresa1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 260, 40));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 0, 260, 460));
+        logoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo.png"))); // NOI18N
+        logoLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jPanel2.add(logoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 260, 430));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 0, 270, 470));
 
         TituloTxt.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
         TituloTxt.setText("INICIAR SESION");
@@ -207,7 +214,7 @@ public class Login extends javax.swing.JFrame {
         UserLabel.setText("USUARIO");
         jPanel1.add(UserLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 70, -1));
 
-        IngresarPanel.setBackground(new java.awt.Color(255, 102, 0));
+        IngresarPanel.setBackground(new java.awt.Color(0, 104, 215));
 
         BIngresar.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         BIngresar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -283,11 +290,11 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_SalirTxtMouseExited
 
     private void BIngresarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BIngresarMouseEntered
-        IngresarPanel.setBackground(new Color(255,140,0));
+        IngresarPanel.setBackground(new Color(0,186,252));
     }//GEN-LAST:event_BIngresarMouseEntered
 
     private void BIngresarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BIngresarMouseExited
-        IngresarPanel.setBackground(new Color(255,102,0));
+        IngresarPanel.setBackground(new Color(0,104,215));
     }//GEN-LAST:event_BIngresarMouseExited
 
     private void UsuariotxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UsuariotxtMousePressed
@@ -367,6 +374,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel Barra;
     private javax.swing.JPanel IngresarPanel;
     private javax.swing.JLabel NombreEmpresa;
+    private javax.swing.JLabel NombreEmpresa1;
     private javax.swing.JLabel PassLabel;
     private javax.swing.JPasswordField PassTxt;
     private javax.swing.JPanel SalirPanel;
@@ -374,11 +382,11 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel TituloTxt;
     private javax.swing.JLabel UserLabel;
     private javax.swing.JTextField Usuariotxt;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JLabel logoLabel;
     // End of variables declaration//GEN-END:variables
 
     private void If(boolean b) {
