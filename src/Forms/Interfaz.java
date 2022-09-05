@@ -29,6 +29,48 @@ public class Interfaz extends javax.swing.JFrame {
         panel.setBackground(new Color(0,186,252));
     }
     
+    //Metodo de insertar
+    private void InsertarT(){
+        try {
+        con = cn.getConnection();
+
+        con.setAutoCommit(false); ////// ----->> Desactivamos auto commit
+
+        Statement st = con.createStatement();
+
+        // Crear una compra
+        st.executeUpdate("INSERT INTO COMPRA(id,fecha) VALUES(1,12/09)");
+
+        // Actualizar el inventario
+        st.executeUpdate("UPDATE TABLE producto SET cantidad = old.cantidad+ 4 WHERE PRODUCT ID = 1");                           
+
+        con.commit();
+        // Crear un registro de envíos si se cumple una determinada condición
+        /*if ("") {
+            st.executeUpdate("INSERT INTO ENVIOS(....) VALUES(...)");
+            con.commit();  ///// ---->> reflejar las operaciones en la base de datos
+        } else {
+             con.rollback(); ///// -----> Deshacer operaciones
+        }*/
+        } catch (SQLException e) {  //Si se produce una Excepción deshacemos las operaciones
+             System.out.println(e.toString());
+             if(con!=null){
+                try {
+                  con.rollback();///// -----> Deshacer operaciones
+                 } catch (SQLException ex) {
+                          System.out.println(ex.toString());
+                }
+             }
+        } finally {
+                try {
+                    if (con != null) {
+                        con.close();
+                    }
+                } catch (SQLException ex) {
+                    System.out.println(ex.toString());
+                }
+     }
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -194,46 +236,7 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-    try {
-    con = cn.getConnection();
-   
-    con.setAutoCommit(false); ////// ----->> Desactivamos auto commit
-
-    Statement st = con.createStatement();
-
-    // Crear una compra
-    st.executeUpdate("INSERT INTO COMPRA(.......) VALUES(.....)");
-
-    // Actualizar el inventario
-    st.executeUpdate("UPDATE TABLE INVENTARIO SET stock = ...... WHERE PRODUCT ID = .....");                           
-
-    // Crear un registro de envíos si se cumple una determinada condición
-    if (Condicion que debe cumplirse) {
-        st.executeUpdate("INSERT INTO ENVIOS(....) VALUES(...)");
-        con.commit();  ///// ---->> reflejar las operaciones en la base de datos
-    } else {
-         con.rollback(); ///// -----> Deshacer operaciones
-    }
-    } catch (SQLException e) {  //Si se produce una Excepción deshacemos las operaciones
-         System.out.println(e.toString());
-         if(con!=null){
-            try {
-              con.rollback();///// -----> Deshacer operaciones
-             } catch (SQLException ex) {
-                      System.out.println(ex.toString());
-            }
-         }
-    } catch (ClassNotFoundException e) {
-            System.out.println(e.toString());
-    } finally {
-            try {
-                if (con != null) {
-                    con.close();
-                }
-            } catch (SQLException ex) {
-                System.out.println(ex.toString());
-            }
- }
+        InsertarT();
     }//GEN-LAST:event_jButton1MouseClicked
 
     /**
