@@ -30,19 +30,19 @@ public class Interfaz extends javax.swing.JFrame {
     }
     
     //Metodo de insertar
-    private void InsertarT(){
+    private void InsertarT(int id, int cantidad){
         try {
         con = cn.getConnection();
 
         con.setAutoCommit(false); ////// ----->> Desactivamos auto commit
 
         Statement st = con.createStatement();
-
+        String fecha = "5/09";
         // Crear una compra
-        st.executeUpdate("INSERT INTO COMPRA(id,fecha) VALUES(1,12/09)");
+        st.executeUpdate("INSERT INTO COMPRA(id,fecha) VALUES("+fecha+")");
 
         // Actualizar el inventario
-        st.executeUpdate("UPDATE TABLE producto SET cantidad = old.cantidad+ 4 WHERE PRODUCT ID = 1");                           
+        st.executeUpdate("UPDATE TABLE producto SET cantidad = old.cantidad + "+String.valueOf(cantidad)+" WHERE PRODUCT ID = "+ String.valueOf(id));                           
 
         con.commit();
         // Crear un registro de envíos si se cumple una determinada condición
@@ -162,14 +162,10 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(153, 153, 0));
         jLabel2.setText("VENTA");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 60, -1, -1));
-
-        jTextField1.setText("jTextField1");
         jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, 220, 40));
 
         jLabel1.setText("Cantidad");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, -1, -1));
-
-        jTextField2.setText("jTextField2");
         jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, 220, 40));
 
         jLabel3.setText("ProductoID");
@@ -236,7 +232,7 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        InsertarT();
+        InsertarT(Integer.parseInt(jTextField1.getText()), Integer.parseInt(jTextField2.getText()));
     }//GEN-LAST:event_jButton1MouseClicked
 
     /**
