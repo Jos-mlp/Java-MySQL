@@ -46,7 +46,6 @@ public class Main extends javax.swing.JFrame {
         Buscar = new javax.swing.JButton();
         Aceptar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        Actualizar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         ViewSesion = new javax.swing.JMenuItem();
@@ -168,14 +167,6 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        Actualizar.setText("Actualizar");
-        Actualizar.setToolTipText("");
-        Actualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ActualizarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -193,8 +184,6 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(NIT, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Aceptar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Actualizar)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
@@ -229,8 +218,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(txtNom)
                     .addComponent(txtNIT)
                     .addComponent(NIT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Aceptar)
-                    .addComponent(Actualizar))
+                    .addComponent(Aceptar))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
 
@@ -352,14 +340,12 @@ public class Main extends javax.swing.JFrame {
         Nom.setVisible(true);
         NIT.setVisible(true);
         Aceptar.setVisible(true);
-        Actualizar.setVisible(true);
         
     }//GEN-LAST:event_InsertarActionPerformed
     private void Desab()
     {
         Buscar.setVisible(false);
         Aceptar.setVisible(false);
-        Actualizar.setVisible(false);
         txtNom.setVisible(false);
         txtNIT.setVisible(false);
         Nom.setVisible(false);
@@ -488,46 +474,6 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_NITActionPerformed
 
-    private void ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarActionPerformed
-                // TODO add your handling code here:
-        PreparedStatement ps = null;
-        try (Connection cnx = conexion.getConnection()){
-            cnx.setAutoCommit(false);
-            String query = "UPDATE `trans`.`Cliente` SET (Nombre,NIT) VALUES (?,?) WHERE id="+ID.getText();
-            ps = cnx.prepareStatement(query);
-            ps.setString(1,Nom.getText());
-            ps.setString(2,NIT.getText());
-            ps.executeUpdate();
-            System.out.println("Cliente ACTUALIZADO");
-            ////////////////////////
-            nuevaTabla();
-        DefaultTableModel model = (DefaultTableModel) Tablet.getModel();
-        PreparedStatement ps1 = null;
-        ResultSet rs = null;
-            query = "SELECT * FROM `trans`.`Cliente`";
-            ps1 = cnx.prepareStatement(query);
-            rs=ps1.executeQuery();
-            while(rs.next()){
-                model.addRow(new Object[]
-                {rs.getInt("ID"), rs.getString("Nombre"), rs.getString("NIT")});
-            }
-        
-            ///////////////////////
-            int resp =JOptionPane.showConfirmDialog(this, "¿Sus nuevos datos estan correctos?\nNombre: "+Nom.getText()+"   NIT: "+NIT.getText(),"Por favor", JOptionPane.YES_NO_OPTION);
-            switch (resp){
-                    case 0:
-                        cnx.commit();
-                        break;
-                    case 1:
-                        cnx.rollback();
-                        break;
-            }
-            Cargar();
-        } catch(Exception e){
-            System.out.println(e);
-        }
-    }//GEN-LAST:event_ActualizarActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -565,7 +511,6 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Aceptar;
-    private javax.swing.JButton Actualizar;
     private javax.swing.JButton Buscar;
     private javax.swing.JMenuItem ChangeSesion;
     private javax.swing.JRadioButton Consuta;
